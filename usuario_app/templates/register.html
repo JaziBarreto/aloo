@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block titulo %}Login y Register{% endblock %} {% block contenido %} {% load static %}
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Registration Form</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">first name</label> 
+                                <div class="input--style-4">{{ form.first_name }}</div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">last name</label> 
+                                <div class="input--style-4">{{ form.last_name }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Birthday</label>
+                                <div class="input-group-icon">
+                                    {{ form.birthday}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Gender</label>
+                                <div class="p-t-10">
+                                    {{ form.gender}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Email</label>
+                                <div class="input--style-4">{{ form.email}} </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Weight (Kg) </label> 
+                                <div class="input--style-4">{{ form.peso}} </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">User Name </label>
+                                <div class="input--style-4">{{ form.username}} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <div class="input--style-4">{{ form.password1 }} </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Confirm Password</label>
+                                <div class="input--style-4">{{ form.password2 }} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Goal</label>
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            {{ form.goal }}
+                            <div class="select-dropdown"></div>
+                        </div>
+                    </div>
+                    {% if form.foto_perfil%}
+                             {{form.foto_perfil}}
+                    {% endif %}
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--green" type="submit">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block contenido %}
+{% load static %}
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Login</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row row-space">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <label class="label">Username</label>
+                                <div class="input--style-4">{{form.username}}</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <div class="input--style-4">{{ form.password}} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--green" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
