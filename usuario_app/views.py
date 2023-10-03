@@ -8,7 +8,7 @@ from .models import CustomUser
 from .models import Item
 
 @login_required()
-def index(request):
+def video(request):
     obj=Item.objects.all()
     return render(request,'index.html', {'obj':obj})
 

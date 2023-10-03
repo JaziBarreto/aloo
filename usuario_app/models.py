@@ -30,7 +30,6 @@ class CustomUser(AbstractUser):
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
 
-
     GOAL_CHOICES = (
         ('Earn weight', _('Earn weight')),
         ('Lose weight', _('Lose weight')),
@@ -42,13 +41,14 @@ class CustomUser(AbstractUser):
         default='Earn weight',  # Opción predeterminada
     )
     
+
     class Meta:
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
-
+    def __str__(self):
+        return self.username
 
 class Item(models.Model):
     video = EmbedVideoField()  # same like models.URLField()
 
-    def __str__(self):
-        return self.username
+    

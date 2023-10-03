@@ -12,12 +12,20 @@ class CustomUserCreationForm(UserCreationForm):
             'gender': forms.RadioSelect(choices=CustomUser.GENDER_CHOICES),
         }
 
-# forms.py en tu aplicación
-
 class CustomUserEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'first_name', 'last_name', 'email', 'peso', 'foto_perfil', 'birthday','gender', 'goal']
+        widgets = {
+            'birthday': forms.DateInput(attrs={'type': 'date'}),
+            'gender': forms.RadioSelect(choices=CustomUser.GENDER_CHOICES),
+        }
+
+    # Agrega un campo personalizado para cargar la foto de perfil
+    foto_perfil = forms.ImageField(
+        required=False,  # Puedes cambiar esto a True si la foto es obligatoria
+        widget=forms.FileInput(attrs={'accept': 'image/*'}),  # Acepta cualquier tipo de imagen
+    )
 
         # def __init__(self, *args, **kwargs):
         #     super().__init__(*args, **kwargs)

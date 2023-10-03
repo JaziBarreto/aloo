@@ -1,95 +1,87 @@
-{% extends "base.html" %} {% block titulo %}Login y Register{% endblock %} {% block contenido %} {% load static %}
+{% extends "base.html" %} 
+
+{% block titulo %}Register{% endblock %} 
+
+{% block estilos %}
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block contenido %} 
 <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
     <div class="wrapper wrapper--w680">
-        <div class="card card-4">
-            <div class="card-body">
-                <h2 class="title">Registration Form</h2>
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="row row-space">
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">first name</label> 
-                                <div class="input--style-4">{{ form.first_name }}</div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">last name</label> 
-                                <div class="input--style-4">{{ form.last_name }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row row-space">
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">Birthday</label>
-                                <div class="input-group-icon">
-                                    {{ form.birthday}}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" >Registration Form</div>
+                        <div class="card-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="first_name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Your first name">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">Gender</label>
-                                <div class="p-t-10">
-                                    {{ form.gender}}
+                                <div class="mb-3">
+                                    <label for="last_name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your last name">
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="birthday" class="form-label">Birthday</label>
+                                    <input type="date" class="form-control" id="birthday" name="birthday"> 
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-select" id="gender" name="gender">
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="peso" class="form-label">Weight (Kg)</label>
+                                        <input type="number" class="form-control" id="peso" name="peso"placeholder="Your weight">
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="username" class="form-label">User Name</label>
+                                        <input type="text" class="form-control" id="username" name="username"placeholder="Your Username">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Your password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password2" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat your password">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Goal</label>
+                                    <select class="form-select" id="goal" name="goal">
+                                        <option>Earn weight</option>
+                                        <option>Lose weight</option>
+                                        <option>Physical activity</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foto_perfil" class="form-label">Profile Photo</label>
+                                    <input type="file" class="form-control" id="foto_perfil" name="foto_perfil">
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-warning" type="submit">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="row row-space">
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">Email</label>
-                                <div class="input--style-4">{{ form.email}} </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">Weight (Kg) </label> 
-                                <div class="input--style-4">{{ form.peso}} </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">User Name </label>
-                                <div class="input--style-4">{{ form.username}} </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row row-space">
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">Password</label>
-                                <div class="input--style-4">{{ form.password1 }} </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="input-group">
-                                <label class="label">Confirm Password</label>
-                                <div class="input--style-4">{{ form.password2 }} </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="label">Goal</label>
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            {{ form.goal }}
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
-                    {% if form.foto_perfil%}
-                             {{form.foto_perfil}}
-                    {% endif %}
-                    <div class="p-t-15">
-                        <button class="btn btn--radius-2 btn--green" type="submit">Submit</button>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
